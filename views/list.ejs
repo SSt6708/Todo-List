@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<!-- EJS  <%= %>   -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>To Do List</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+
+    <div class="box" id="heading">
+        <h1>
+            <%= kindOfDay %>
+        </h1>
+    </div>
+
+    <div class="box">
+
+        <% newListItem.forEach(element => { %>
+            <form action="/delete" method="POST">
+                <div class="items">
+                    <input type="checkbox" onchange="this.form.submit()" name="checked_id" value=<%=element.id%>>
+                    <p>
+                        <%= element.name %>
+                    </p>
+
+                </div>
+                <input type="hidden" name="selectedType" value=<%=kindOfDay %> >
+
+            </form>
+
+
+            <% }) %>
+                <form class="item" action="/" method="POST">
+                    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                    <button type="submit" name="list" value=<%=kindOfDay %>>+</button>
+                </form>
+    </div>
+
+
+
+
+
+    <script src="" async defer></script>
+</body>
+
+</html>
